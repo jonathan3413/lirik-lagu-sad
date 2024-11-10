@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabut Abang awak</title>
+    <link rel="website-icon" type="jg" href="images.jpg">
+    <style>
+      body {
+          background: linear-gradient(to right, gray, black);
+          font-family: Arial, sans-serif;
+          text-align: center;
+          padding: 50px;
+          color: white;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      #lyrics {
+          margin-top: 20px;
+          font-size: 22px;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          text-transform: capitalize;
+          font-weight: 500;
+          padding: 20px;
+          color: white;
+      }
+      #myAudio {
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          opacity: 0.6;
+      }
+
+      img {
+        width: 100%;
+        max-width: 800px;
+        border-radius: 5px;
+        box-shadow: 5px 10px 20px rgba(255, 255, 255, 0.5);
+      }
+
+      @media only screen and (min-width: 800px) {
+        h1{
+          font-size: 35px;
+        }
+
+        #lyrics {
+          font-size: 30px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Sampai Akhir Waktu</h1>
+    <img src="bghd12.jpg" alt="foto-kamu" />
+
+    <div id="lyrics-container">
+      <div id="lyrics">....</div>
+    </div>
+
+    <audio id="myAudio" controls>
+      <source src="sampai-akhir-waktu.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <script>
+      var audio = document.getElementById("myAudio");
+      var lyricsContainer = document.getElementById("lyrics-container");
+      var lyricsText = document.getElementById("lyrics");
+
+      var lyrics = [
+        { time: 4, text: "aku tak main-main" },
+        { time: 6, text: "dengan semua ini..." },
+        { time: 13, text: "aku akan datang lagi" },
+        { time: 17, text: "meski ibumu melarang..ouu" },
+        { time: 23, text: "ku tunjukkan kesungguhan" },
+        { time: 28, text: "untuk miliki dirimu..." },
+        { time: 33, text: "yang kuingin..." },
+        { time: 35, text: "bukan sekedar" },
+        { time: 37, text: "hanya untuk pacaran..." },
+        { time: 43, text: "yang ku mahu memberikan seluruh cinta" },
+        { time: 49, text: "sampai akhir waktu nanti" },
+      ];
+
+      audio.ontimeupdate = function () {
+        var currentTime = audio.currentTime;
+        for (var i = 0; i < lyrics.length; i++) {
+          if (Math.floor(currentTime) == lyrics[i].time) {
+            lyricsText.innerHTML = lyrics[i].text;
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
